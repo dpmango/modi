@@ -1,27 +1,82 @@
 ---
 title: Homepage title
-bodyClass: homepage
 ---
 extends shared/_layout
 block content
   .page
     .page__content
-      .section
+      // section
+      .section(data-section-name='hero')
         .container
           .hero
             .hero__wrapper
-              .hero__clip Modi
+              .hero__image
+                img(src='img/heroLetters.png')
               .hero__text представляем новый магазин <br> доступных товаров
-              .hero__more.js-nextScrollifySection
+              .next-section.js-nextScrollifySection
                 span посмотреть ассортимент
                 i.ico.ico-arrow
-      .section(style='background-color: red;')
-      .section
-        .js-slick
-          .slide
-          .slide
-      // iteration example
-      //- - var socials = ['facebook','gplus','twitter','fav','link','bitly','telegram','ok','vk',]
-      //-   each social in socials
-      //-     a(class="social-share" href="#" role="button")
-      //-       +icon('icon-social-'+social)
+      // next section
+      .section(data-section-name='info')
+        .container
+          .info
+            .info__blot.info__blot--purple
+              .info__blot__image
+                img(src='img/infoCosmetics.png' srcset='img/infoCosmetics@2x.png 2x')
+              .info__blot__name Косметика и гигиена
+            .info__blot.info__blot--tint
+              .info__blot__image
+                img(src='img/infoHobby.png' srcset='img/infoHobby@2x.png 2x')
+              .info__blot__name Хобби
+            .info__blot.info__blot--blue
+              .info__blot__image
+                img(src='img/infoGadget.png' srcset='img/infoGadget@2x.png 2x')
+              .info__blot__name Гаджеты <br> и аксессуары
+            .info__blot.info__blot--red
+              .info__blot__image
+                img(src='img/infoSports.png' srcset='img/infoSports@2x.png 2x')
+              .info__blot__name Товары <br> для спорта
+            .info__blot.info__blot--green
+              .info__blot__image
+                img(src='img/infoFoods.png' srcset='img/infoFoods@2x.png 2x')
+              .info__blot__name Продукты
+            
+            .info__description modi — это возможность обзавестись приятными мелочами и разными удобными штуками по очень выгодной цене
+            .next-section.js-nextScrollifySection
+              span посмотреть товары
+              i.ico.ico-arrow
+      // next section
+      .section(data-section-name='slider')
+        .slider
+          .js-slick
+            .slider__slide
+              img(src='img/sliderSlide_1.png' srcset='img/sliderSlide_1@2x.png 2x')
+            .slider__slide
+              img(src='img/sliderSlide_2.png' srcset='img/sliderSlide_2@2x.png 2x')
+            .slider__slide
+              img(src='img/sliderSlide_3.png' srcset='img/sliderSlide_3@2x.png 2x')
+            .slider__slide
+              img(src='img/sliderSlide_4.png' srcset='img/sliderSlide_4@2x.png 2x')
+                          
+      // next section
+      .section(data-section-name='cta')
+        .container
+          .cta
+            .cta__wrapper
+              .cta__text 
+                p С самого начала своего существования MINISO развивает собственное централизованное производство и строго контролирует все процессы от проектирования до расположения товаров на полках магазинов.
+                p Через товары компания транслирует свою жизненную позицию, основанную на том
+              .cta__right
+                .cta__figures
+                  .cta__figure.cta__figure--tint
+                    .cta__figure__number 18 000
+                    .cta__figure__description планируемый ассортимент
+                  .cta__figure.cta__figure--red
+                    .cta__figure__number 800
+                    .cta__figure__description магазинов по всей стране
+                  .cta__figure.cta__figure--purple
+                    .cta__figure__number 200 Р
+                    .cta__figure__description магазинов по всей стране
+                
+                .cta__call-modal Узнай об открытии первым
+                

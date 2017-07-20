@@ -33,44 +33,6 @@ $(document).ready(function(){
 		e.preventDefault();
 	});
 
-	// Smoth scroll
-	$('a[href^="#section"]').click( function() {
-        var el = $(this).attr('href');
-        $('body, html').animate({
-            scrollTop: $(el).offset().top}, 1000);
-        return false;
-	});
-
-  // HEADER SCROLL
-  // add .header-static for .page or body
-  // to disable sticky header
-  if ( $('.header-static').length == 0 ){
-    _window.scrolled(10, function() { // scrolled is a constructor for scroll delay listener
-      var vScroll = _window.scrollTop();
-      var header = $('.header').not('.header--static');
-      var headerHeight = header.height();
-      var heroHeight = $('.hero').outerHeight() - headerHeight;
-
-      if ( vScroll > headerHeight ){
-        header.addClass('header--transformed');
-      } else {
-        header.removeClass('header--transformed');
-      }
-
-      if ( vScroll > heroHeight ){
-        header.addClass('header--fixed');
-      } else {
-        header.removeClass('header--fixed');
-      }
-    });
-  }
-
-  // HAMBURGER TOGGLER
-  $('.hamburger').on('click', function(){
-    $('.hamburger').toggleClass('active');
-    $('.mobile-navi').toggleClass('active');
-  });
-
   // SCROLLIFY
   $.scrollify({
     section : ".section",
@@ -85,7 +47,14 @@ $(document).ready(function(){
     overflowScroll: true,
     updateHash: true,
     touchScroll:true,
-    before:function() {},
+    before:function(i, el) {
+      if (i > 1){
+        $('.header').addClass('visible')
+      } else {
+        $('.header').removeClass('visible')
+      }
+      storeScrollifySection = i;
+    },
     after:function() {},
     afterResize:function() {},
     afterRender:function() {}
@@ -101,14 +70,14 @@ $(document).ready(function(){
 
   $('.js-slick').slick({
     autoplay: true,
+    autoplaySpeed: 6000,
     dots: false,
-    arrows: false,
+    arrows: true,
     infinite: true,
     speed: 300,
-    slidesToShow: 1,
-    centerMode: true,
-    variableWidth: true
+    slidesToShow: 1
   });
+
 
   //////////
   // MODALS

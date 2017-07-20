@@ -19,7 +19,10 @@
     display: flex
     flex-direction: column
     text-align: center
-    padding-bottom: 25px
+  &__image
+    margin-top: auto
+    img
+      max-width: 100%
   &__clip
     font-size: 500px
     line-height: 1
@@ -30,18 +33,206 @@
     -webkit-background-clip: text
     -webkit-text-fill-color: transparent
   &__text
-    margin-top: auto
+    margin-top: 25px
     font-size: 39px
     font-weight: 600
     line-height: 1
     text-transform: lowercase
-  &__more
-    margin-top: 25px
-    font-size: 17px
-    color: $colorPrimary
+
+.next-section
+  margin-top: 25px
+  margin-bottom: 25px
+  font-size: 17px
+  color: $colorPrimary
+  font-weight: 600
+  text-transform: lowercase
+  cursor: pointer
+  span
+    display: block
+    margin-bottom: 15px
+
+
+.info
+  flex: 1 1 auto
+  display: flex
+  flex-direction: column
+  position: relative
+  text-align: center
+  &__description
+    position: relative
+    z-index: 3
+    margin: auto
+    max-width: 650px
+    font-size: 40px
     font-weight: 600
-    text-transform: lowercase
+    line-height: 1.5
+  &__blot
+    position: absolute
+    z-index: 2
+    text-align: center
+    &--purple
+      top: -130px
+      left: 35%
+      color: #702c7c
+      .info__blot__image
+        size: 175px
+        background: #702c7c
+    &--tint
+      top: 20%
+      right: 0
+      color: #00a99d
+      .info__blot__image
+        size: 150px
+        background: #00a99d
+    &--blue
+      right: 10%
+      bottom: 40px
+      color: #3369ab
+      .info__blot__image
+        size: 150px
+        background: #3369ab
+    &--red
+      bottom: 40px
+      left: 25%
+      color: #f05b83
+      .info__blot__image
+        size: 70px
+        background: #f05b83
+    &--green
+      left: 0
+      top: 50%
+      transform: translateY(-50%)
+      color: #4eb857
+      .info__blot__image
+        size: 120px
+        background: #4eb857
+    &__image
+      border-radius: 50%
+      display: flex
+      flex-direction: column
+      justify-content: center
+      align-items: center
+      img
+        max-width: 100%
+    &__name
+      margin-top: 15px
+      font-size: 15px
+      font-weight: 600
+
+.slider
+  margin-top: -100px
+  position: relative
+  *:focus
+    outline: none
+  &__slide
+    position: relative
+    overflow: hidden
+    z-index: 1
+    height: 100vh
+    img
+      position: absolute
+      z-index: 2
+      top: 50%
+      left: 50%
+      transform: translate(-50%,-50%)
+      min-width: 100%
+      min-height: 100%
+      width: auto
+      height: auto
+
+.slick-next, .slick-prev
+  position: absolute
+  top: 50%
+  z-index: 5
+  -webkit-apperance: none
+  background: transparent
+  font-size: 0
+  border: 0
+  box-shadow: none
+  cursor: pointer
+  transform: translateY(-50%)
+  &::before
+    display: inline-block
+    content: ' '
+    size: 60px
+    background: white svg-load('../img/svg/arrow.svg') no-repeat center
+    border-radius: 50%
+    background-size: 32px 12px
     cursor: pointer
-    span
-      display: block
-      margin-bottom: 15px
+    transition: transform $transitionSpeed $ease
+
+.slick-next
+  right: 0
+  &::before
+    transform: rotate(-90deg)
+  &:hover::before
+    transform: scale(1.3) rotate(-90deg)
+
+.slick-prev
+  left: 0
+  &::before
+    transform: rotate(90deg)
+  &:hover::before
+    transform: scale(1.3) rotate(90deg)
+
+
+.cta
+  flex: 1 1 auto
+  display: flex
+  flex-direction: column
+  position: relative
+  &__wrapper
+    margin-top: auto
+    margin-bottom: auto
+    flex: 0 1 auto
+    display: flex
+  &__text
+    flex: 0 1 50%
+    font-size: 24px
+    padding-right: 20px
+    line-height: 1.3
+    font-weight: 400
+    p
+      max-width: 430px
+  &__right
+    flex: 0 0 50%
+    display: flex
+    align-items: flex-end
+    padding-left: 20px
+  &__figures
+    flex: 0 0 auto
+    display: flex
+    flex-direction: column
+  &__figure
+    margin-bottom: 35px
+    &--purple
+      .cta__figure__number
+        color: #702c7c
+    &--tint
+      .cta__figure__number
+        color: #00a99d
+    &--red
+      .cta__figure__number
+        color: #f05b83
+    &__number
+      font-size: 86px
+      line-height: 1
+      font-weight: 900
+    &__description
+      margin-top: 10px
+      font-size: 15px
+      font-weight: 600
+  &__call-modal
+    flex: 0 0 235px
+    display: flex
+    justify-content: center
+    align-items: center
+    text-align: center
+    margin-left: auto
+    background: #95ca6e
+    border-radius: 50%
+    size: 235px
+    color: white
+    font-size: 30px
+    font-weight: 900
+    cursor: pointer

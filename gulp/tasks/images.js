@@ -10,9 +10,9 @@ gulp.task('images', function(){
       config.src.img + '**/*.{jpg,png,jpeg,svg,gif}',
       '!' + config.src.img + '/svgo/**/*.*'
     ])
-    .pipe(cache(imagemin({
-        interlaced: true
-      })))
+    // .pipe(cache(imagemin({
+    //     interlaced: true
+    //   })))
     .pipe(gulp.dest(config.dest.img))
 });
 
