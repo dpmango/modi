@@ -33,6 +33,9 @@ $(document).ready(function(){
 		e.preventDefault();
 	});
 
+  // ANIMATIONS
+  $('.hero').addClass('ready')
+
   // SCROLLIFY
   $.scrollify({
     section : ".section",

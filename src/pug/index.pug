@@ -16,6 +16,7 @@ block content
               .next-section.js-nextScrollifySection
                 span посмотреть ассортимент
                 i.ico.ico-arrow
+      
       // next section
       .section(data-section-name='info')
         .container
@@ -45,6 +46,7 @@ block content
             .next-section.js-nextScrollifySection
               span посмотреть товары
               i.ico.ico-arrow
+      
       // next section
       .section(data-section-name='slider')
         .slider
@@ -57,7 +59,9 @@ block content
               img(src='img/sliderSlide_3.png' srcset='img/sliderSlide_3@2x.png 2x')
             .slider__slide
               img(src='img/sliderSlide_4.png' srcset='img/sliderSlide_4@2x.png 2x')
-                          
+          .slider__next.js-nextScrollifySection
+            i.ico.ico-arrow
+                    
       // next section
       .section(data-section-name='cta')
         .container
@@ -78,5 +82,10 @@ block content
                     .cta__figure__number 200 Р
                     .cta__figure__description магазинов по всей стране
                 
-                .cta__call-modal Узнай об открытии первым
-                
+                .cta__call-modal 
+                  span Узнай об открытии первым
+      
+      .modal
+        .modal__wrapper
+          
+          

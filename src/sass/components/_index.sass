@@ -5,6 +5,8 @@
   flex-direction: column
   min-height: 100vh
   padding-top: 100px
+  background: white
+  overflow: hidden
   > .container
     flex: 1 1 auto
     display: flex
@@ -14,13 +16,30 @@
   flex: 1 1 auto
   display: flex
   flex-direction: column
+  &.ready
+    .hero__image
+      &::after
+        transform: translateX(100%)
+        opacity: 0
   &__wrapper
     flex: 1 1 auto
     display: flex
     flex-direction: column
     text-align: center
   &__image
+    position: relative
     margin-top: auto
+    &::after
+      display: block
+      content: ''
+      position: absolute
+      left: 0
+      top: 0
+      bottom: 0
+      right: 0
+      opacity: 1
+      background: white
+      transition: transform 1s ease-in, opacity .7s .3s ease-out
     img
       max-width: 100%
   &__clip
@@ -77,6 +96,9 @@
       .info__blot__image
         size: 175px
         background: #702c7c
+        animation-delay: .3s
+        img
+          animation-delay: .3s
     &--tint
       top: 20%
       right: 0
@@ -84,6 +106,9 @@
       .info__blot__image
         size: 150px
         background: #00a99d
+        animation-delay: .8s
+        img
+          animation-delay: .8s
     &--blue
       right: 10%
       bottom: 40px
@@ -91,6 +116,9 @@
       .info__blot__image
         size: 150px
         background: #3369ab
+        animation-delay: .5s
+        img
+          animation-delay: .5s
     &--red
       bottom: 40px
       left: 25%
@@ -106,14 +134,25 @@
       .info__blot__image
         size: 120px
         background: #4eb857
+        animation-delay: .6s
+        img
+          animation-delay: .6s
     &__image
       border-radius: 50%
       display: flex
       flex-direction: column
       justify-content: center
       align-items: center
+      animation-name: infoPulse
+      animation-duration: 2000ms
+      animation-timing-function: ease
+      animation-iteration-count: infinite
       img
         max-width: 100%
+        animation-name: infoPulseImage
+        animation-duration: 2000ms
+        animation-timing-function: ease
+        animation-iteration-count: infinite
     &__name
       margin-top: 15px
       font-size: 15px
@@ -139,6 +178,22 @@
       min-height: 100%
       width: auto
       height: auto
+  &__next
+    position: absolute
+    z-index: 5
+    bottom: -15px
+    left: 50%
+    transform: translateX(-50%)
+    background: white
+    border-radius: 50%
+    size: 100px
+    display: flex
+    justify-content: center
+    align-items: center
+    cursor: pointer
+    transition: transform $transitionSpeed $ease
+    &:hover
+      transform: translateX(-50%) scale(1.2)
 
 .slick-next, .slick-prev
   position: absolute
@@ -223,16 +278,40 @@
       font-size: 15px
       font-weight: 600
   &__call-modal
+    position: relative
     flex: 0 0 235px
     display: flex
     justify-content: center
     align-items: center
     text-align: center
     margin-left: auto
-    background: #95ca6e
-    border-radius: 50%
     size: 235px
     color: white
     font-size: 30px
     font-weight: 900
     cursor: pointer
+    span
+      display: inline-block
+      position: relative
+      z-index: 2
+    &::after
+      display: inline-block
+      content: ' '
+      position: absolute
+      size: 235px
+      top: 50%
+      left: 50%
+      z-index: 1
+      transform: translate(-50%, -50%)
+      background: #95ca6e
+      border-radius: 50%
+      animation-name: ctaPulse
+      animation-duration: 2000ms
+      animation-timing-function: ease
+      animation-iteration-count: infinite
+    &:hover
+      &::after
+        animation-play-state: paused
+
+
+        
