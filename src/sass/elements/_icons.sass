@@ -11,7 +11,13 @@
 // this section intended to be for custom icons which for some reason
 // can't be parsed correctly or sprite is not required
 
-.icon
+.ico
   display: inline-block
   font-style: normal
   content: ' '
+  background-position: center center
+  background-repeat: no-repeat
+  background-size: contain
+  &-arrow
+    background-image: svg-load('../img/svg/arrow.svg')
+    size: 50px 20px

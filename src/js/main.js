@@ -75,13 +75,13 @@ $(document).ready(function(){
   $.scrollify({
     section : ".section",
     sectionName : "section-name",
-    interstitialSection : "",
+    interstitialSection : ".header",
     easing: "easeOutExpo",
     scrollSpeed: 1100,
     offset : 0,
     scrollbars: true,
     standardScrollElements: "",
-    setHeights: true,
+    setHeights: false,
     overflowScroll: true,
     updateHash: true,
     touchScroll:true,
@@ -89,6 +89,10 @@ $(document).ready(function(){
     after:function() {},
     afterResize:function() {},
     afterRender:function() {}
+  });
+
+  $('.js-nextScrollifySection').on('click', function(){
+    $.scrollify.next();
   });
 
   //////////

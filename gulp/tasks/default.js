@@ -21,7 +21,5 @@ gulp.task('watch',
   'copy:watch',
   'pug:watch',
   'javascript:watch',
-  'images:watch',
-  'sprite:svg:watch',
-  'sprite:png:watch',
+  'images:watch'
 ]);

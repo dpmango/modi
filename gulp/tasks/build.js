@@ -22,8 +22,6 @@ function build(callback) {
     'pug',
     'javascript',
     'images',
-    'sprite:svg',
-    'sprite:png',
     'copy',
     callback
   );

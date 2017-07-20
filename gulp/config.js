@@ -29,7 +29,7 @@ var config = {
     html  : destPath,
     css   : destPath + '/css',
     js    : destPath + '/js',
-    img   : destPath + '/img',
+    img   : destPath + '',
     fonts : destPath + '/fonts',
     vendor: destPath + '/vendor'
   },

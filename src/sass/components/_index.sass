@@ -1,4 +1,47 @@
 // INDEX
 
-.hello
-  display: none
+.section
+  display: flex
+  flex-direction: column
+  min-height: 100vh
+  padding-top: 100px
+  > .container
+    flex: 1 1 auto
+    display: flex
+    flex-direction: column
+
+.hero
+  flex: 1 1 auto
+  display: flex
+  flex-direction: column
+  &__wrapper
+    flex: 1 1 auto
+    display: flex
+    flex-direction: column
+    text-align: center
+    padding-bottom: 25px
+  &__clip
+    font-size: 500px
+    line-height: 1
+    font-weight: 900
+    text-transform: lowercase
+    pointer-events: none
+    background: url('../img/heroImg.png') no-repeat
+    -webkit-background-clip: text
+    -webkit-text-fill-color: transparent
+  &__text
+    margin-top: auto
+    font-size: 39px
+    font-weight: 600
+    line-height: 1
+    text-transform: lowercase
+  &__more
+    margin-top: 25px
+    font-size: 17px
+    color: $colorPrimary
+    font-weight: 600
+    text-transform: lowercase
+    cursor: pointer
+    span
+      display: block
+      margin-bottom: 15px
