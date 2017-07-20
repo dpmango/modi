@@ -1,9 +1,10 @@
-# Gulp Starter Pack
+# MODI HTML/CSS
 This package intended to solve common front-end development tasks.
 
 
 ## How to start
-* `npm install` or `yarn` - install all dependencies
+* `npm install` or `yarn` - install npm dependencies
+* `bower install` - install bower dependencies
 * `gulp` - run dev-server
 * `gulp build` - build project from sources
 
@@ -27,11 +28,7 @@ Task name          | Description
 `sass` 	         | compile .sass/.scss to .css. We also use [postcss](https://github.com/postcss/postcss) for [autoprefixer](https://github.com/postcss/autoprefixer) and [Lost](https://github.com/peterramsing/lost), so feel free to include other awesome postcss [plugins](https://github.com/postcss/postcss#plugins) when needed
 `webpack`          | compile .js sources into bundle file
 `copy`             | copy common files from `./src` path to `./dist` path
-`swig`             | compile [swig](http://paularmstrong.github.io/swig/)  templates
-`nunjucks`         | compile Mozilla's awesome [nunjucks](https://mozilla.github.io/nunjucks/) templates
 `jade`             | compile [jade](http://jade-lang.com/) templates
-`svgo`             | optimize svg files with [svgo](https://github.com/svg/svgo)
-`iconfont`         | compile iconfonts from svg sources
 `sprite:svg`       | create svg symbol sprites ([css-tricks](https://css-tricks.com/svg-sprites-use-better-icon-fonts/))
 `sprite:png`       | create png sprites
 `server`           | run dev-server powered by [BrowserSync](https://www.browsersync.io/)

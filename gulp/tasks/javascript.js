@@ -7,6 +7,9 @@ var config      = require('../config');
 
 gulp.task('javascript:vendor', function() {
   return gulp.src([
+      'bower_components/jquery/dist/jquery.min.js',
+      'bower_components/jquery-validation/dist/jquery.validate.min.js',
+      'bower_components/slick-carousel/slick/slick.min.js',
       config.src.js + '/vendor/**/*.js'
      ])
     .pipe(config.production ? uglifyJs() : util.noop())

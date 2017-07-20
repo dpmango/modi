@@ -71,30 +71,31 @@ $(document).ready(function(){
     $('.mobile-navi').toggleClass('active');
   });
 
-  // SET ACTIVE CLASS IN HEADER
-  // * could be removed in production and server side rendering
-  // user .active for li instead
-  $('.header__menu li').each(function(i,val){
-    if ( $(val).find('a').attr('href') == window.location.pathname.split('/').pop() ){
-      $(val).addClass('active');
-    } else {
-      $(val).removeClass('active')
-    }
+  // SCROLLIFY
+  $.scrollify({
+    section : ".section",
+    sectionName : "section-name",
+    interstitialSection : "",
+    easing: "easeOutExpo",
+    scrollSpeed: 1100,
+    offset : 0,
+    scrollbars: true,
+    standardScrollElements: "",
+    setHeights: true,
+    overflowScroll: true,
+    updateHash: true,
+    touchScroll:true,
+    before:function() {},
+    after:function() {},
+    afterResize:function() {},
+    afterRender:function() {}
   });
-
-
-  // VIDEO PLAY
-  $('.promo-video .icon').on('click', function(){
-    $(this).closest('.promo-video').toggleClass('playing');
-    $(this).closest('.promo-video').find('iframe').attr("src", $("iframe").attr("src").replace("autoplay=0", "autoplay=1"));
-  });
-
 
   //////////
   // SLIDERS
   //////////
 
-  $('.trending__wrapper').slick({
+  $('.js-slick').slick({
     autoplay: true,
     dots: false,
     arrows: false,
@@ -131,125 +132,6 @@ $(document).ready(function(){
   //   $('#'+hash).addClass('opened');
   // }
   //
-
-
-  // Magnific Popup
-  // var startWindowScroll = 0;
-  $('.js-popup').magnificPopup({
-    type: 'inline',
-    fixedContentPos: true,
-    fixedBgPos: true,
-    overflowY: 'auto',
-    closeBtnInside: true,
-    preloader: false,
-    midClick: true,
-    removalDelay: 300,
-    mainClass: 'popup-buble',
-    callbacks: {
-      beforeOpen: function() {
-        // startWindowScroll = _window.scrollTop();
-        // $('html').addClass('mfp-helper');
-      },
-      close: function() {
-        // $('html').removeClass('mfp-helper');
-        // _window.scrollTop(startWindowScroll);
-      }
-    }
-  });
-
-
-  // $('.popup-with-move-anim').magnificPopup({
-  //   type: 'inline',
-  //   fixedContentPos: false,
-  //   fixedBgPos: true,
-  //   overflowY: 'auto',
-  //   closeBtnInside: true,
-  //   preloader: false,
-  //   midClick: true,
-  //   removalDelay: 300,
-  //   mainClass: 'my-mfp-slide-bottom'
-  // });
-  //
-  // $('.popup-gallery').magnificPopup({
-	// 	delegate: 'a',
-	// 	type: 'image',
-	// 	tLoading: 'Loading image #%curr%...',
-	// 	mainClass: 'mfp-img-mobile',
-	// 	gallery: {
-	// 		enabled: true,
-	// 		navigateByImgClick: true,
-	// 		preload: [0,1]
-	// 	},
-	// 	image: {
-	// 		tError: '<a href="%url%">The image #%curr%</a> could not be loaded.'
-	// 	}
-	// });
-
-
-  ////////////
-  // UI
-  ////////////
-
-  // custom selects
-  $('.ui-select__visible').on('click', function(e){
-    var that = this
-    // hide parents
-    $(this).parent().parent().parent().find('.ui-select__visible').each(function(i,val){
-      if ( !$(val).is($(that)) ){
-        $(val).parent().removeClass('active')
-      }
-    });
-
-    $(this).parent().toggleClass('active');
-  });
-
-  $('.ui-select__dropdown span').on('click', function(){
-    // parse value and toggle active
-    var value = $(this).data('val');
-    if (value){
-      $(this).siblings().removeClass('active');
-      $(this).addClass('active');
-
-      // set visible
-      $(this).closest('.ui-select').removeClass('active');
-      $(this).closest('.ui-select').find('input').val(value);
-
-      $(this).closest('.ui-select').find('.ui-select__visible span').text(value);
-    }
-
-  });
-
-  // handle outside click
-  $(document).click(function (e) {
-    var container = new Array();
-    container.push($('.ui-select'));
-
-    $.each(container, function(key, value) {
-        if (!$(value).is(e.target) && $(value).has(e.target).length === 0) {
-            $(value).removeClass('active');
-        }
-    });
-  });
-
-  // numeric input
-  $('.ui-number span').on('click', function(e){
-    var element = $(this).parent().find('input');
-    var currentValue = parseInt($(this).parent().find('input').val()) || 0;
-
-    if( $(this).data('action') == 'minus' ){
-      if(currentValue <= 1){
-        return false;
-      }else{
-        element.val( currentValue - 1 );
-      }
-    } else if( $(this).data('action') == 'plus' ){
-      if(currentValue >= 99){
-        return false;
-      } else{
-        element.val( currentValue + 1 );
-      }
-    }
-  });
 
 
   // Masked input

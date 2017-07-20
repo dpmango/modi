@@ -24,7 +24,7 @@ gulp.task('server', function() {
     logLevel: 'info', // 'debug', 'info', 'silent', 'warn'
     logConnections: false,
     logFileChanges: true,
-    open: Boolean(util.env.open || true),
+    open: Boolean(util.env.open),
     notify: false,
     ghostMode: false,
     online: Boolean(util.env.tunnel),

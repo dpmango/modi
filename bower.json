@@ -1,0 +1,22 @@
+{
+  "name": "gulp-tpl",
+  "description": "",
+  "main": "index.js",
+  "authors": [
+    "Sergey Khmelevskoy <xs290@me.com>"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/dpmango/modi",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "^3.2.1",
+    "jquery-validation": "^1.16.0",
+    "slick-carousel": "^1.6.0"
+  }
+}
