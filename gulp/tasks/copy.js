@@ -14,5 +14,5 @@ gulp.task('copy', [
 ]);
 
 gulp.task('copy:watch', function() {
-  gulp.watch(config.src.fonts + '/*.{ttf,eot,woff,woff2}', ['copy:fonts'])  
+  gulp.watch(config.src.fonts + '/*.{ttf,eot,woff,otf,woff2}', ['copy:fonts'])  
 });
