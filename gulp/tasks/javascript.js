@@ -13,6 +13,10 @@ gulp.task('javascript:vendor', function() {
       config.src.js + '/vendor/**/*.js'
      ])
     .pipe(config.production ? uglifyJs() : util.noop())
+    .on('error', function(err) {
+      util.log(util.colors.red('[Error]'), err.toString());
+      this.emit('end');
+    })
     .pipe(plumber({ errorHandler: config.errorHandler }))
     .pipe(concat('vendor.js'))
     .pipe(gulp.dest(config.dest.js));
@@ -23,6 +27,10 @@ gulp.task('javascript:app', function() {
       config.src.js + '/*.js'
      ])
     .pipe(config.production ? uglifyJs() : util.noop())
+    .on('error', function(err) {
+      util.log(util.colors.red('[Error]'), err.toString());
+      this.emit('end');
+    })
     .pipe(plumber({ errorHandler: config.errorHandler }))
     .pipe(concat('app.js'))
     .pipe(gulp.dest(config.dest.js));

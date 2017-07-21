@@ -4,8 +4,8 @@ $(document).ready(function(){
   // Global variables
   //////////
 
-  const _window = $(window);
-  const _document = $(document);
+  var _window = $(window);
+  var _document = $(document);
 
   function isRetinaDisplay() {
     if (window.matchMedia) {
