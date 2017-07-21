@@ -295,29 +295,50 @@
       position: relative
       z-index: 2
       transition: transform $transitionSpeed $ease, opacity .15s .1s ease
-    &::after
+    .ico-close
+      position: absolute
+      top: 50%
+      left: 50%
+      z-index: 10
+      transform: translate(-50%,-50%) scale(0)
+      opacity: 0
+      transition: transform $transitionSpeed $ease, opacity .15s .1s ease
+      cursor: pointer
+      pointer-events: none
+      &:hover
+        transform: translate(-50%,-50%) scale(1.2) rotate(-10deg)
+    &::before, &::after
       display: inline-block
       content: ' '
       position: absolute
       size: 235px
       top: 50%
       left: 50%
-      z-index: 0
       transform: translate(-50%, -50%)
+      background: #95ca6e
+      border-radius: 50%
+    &::before
+      transition: transform .4s ease-in
+      z-index: 1
+    &::after
+      z-index: 1
       background: #95ca6e
       border-radius: 50%
       animation-name: ctaPulse
       animation-duration: 2000ms
       animation-timing-function: ease
       animation-iteration-count: infinite
-      transition: transform .4s ease-in
     &:hover
       &::after
         animation-play-state: paused
     &.active
+      pointer-events: none
       span
         opacity: 0
         transform: scale(0)
-      &::after
-        animation: none
-        transform: scale(15)
+      .ico-close
+        transform: translate(-50%,-50%) scale(1)
+        opacity: 1
+        pointer-events: all
+      &::before
+        transform: translate(-50%, -50%) scale(15)

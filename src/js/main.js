@@ -87,7 +87,6 @@ $(document).ready(function(){
   //////////
   // Custom modals
   $('.cta__call-modal').on('click', function(){
-
     // create circle animation and show X to close
     $(this).addClass('active');
 
@@ -97,7 +96,6 @@ $(document).ready(function(){
     }
 
     // disable scrollify and prevent scroll
-    $.scrollify.disable();
     stopScroll()
 
     // find by id
@@ -108,24 +106,28 @@ $(document).ready(function(){
     window.location.hash = target;
   });
 
-  $('.modal__close').on('click', function(){
-    $(this).closest('.modal').removeClass('opened');
+  $('.js-modal__close').on('click', function(e){
+    e.stopPropagation();
+    $('.cta__call-modal').removeClass('active');
+    $('.modal').removeClass('opened');
     window.location.hash = "";
-    $.scrollify.enable();
     stopScroll()
   });
 
   // CHECK SAVED STATE
   if(window.location.hash) {
     var hash = window.location.hash.substring(1);
+    if (hash == "modalCta"){
+      $('.cta__call-modal').addClass('active');
+      $.scrollify.move("#cta");
+      stopScroll()
+    }
     $('#'+hash).addClass('opened');
-    $('.cta__call-modal').addClass('active');
-    $.scrollify.disable();
-    stopScroll()
   }
 
   function stopScroll(){
     if( $('.modal').is('.opened') ){
+      $.scrollify.disable();
       $('body').on('touchmove', function (e) {
         e.preventDefault();
       });
@@ -136,6 +138,7 @@ $(document).ready(function(){
         }
       })
     } else {
+      $.scrollify.enable();
       $('body').unbind("mousewheel");
       $('body').off("touchmove");
     }
