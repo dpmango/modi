@@ -78,7 +78,12 @@ $(document).ready(function(){
 
   $('.js-slick').on('init', function(event, slick){
     slick.$slides.each(function(i,val){
-      $('.header__text').append( "<span>" + $(val).data('logo-text') + "</span>")
+      if ( $(val).data('hex') ){
+        var textColor = $(val).data('hex')
+      }
+      var element = "<span>" + $(val).data('logo-text') + "</span>"
+      $('.header__text').append( $(element).css('color', textColor) );
+
     })
     $('.header__text span:nth-child(' + 1 + ')').addClass('showing');
   });
