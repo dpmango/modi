@@ -16,11 +16,6 @@
   flex: 1 1 auto
   display: flex
   flex-direction: column
-  &.ready
-    .hero__image
-      &::after
-        transform: translateX(100%)
-        opacity: 0
   &__wrapper
     flex: 1 1 auto
     display: flex
@@ -39,7 +34,7 @@
       right: 0
       opacity: 1
       background: white
-      transition: transform 1s ease-in, opacity .7s .3s ease-out
+      transition: transform 1s ease-in, opacity .7s .5s ease-out
     img
       max-width: 100%
   &__clip
@@ -53,6 +48,7 @@
     -webkit-text-fill-color: transparent
   &__text
     margin-top: 25px
+    margin-bottom: auto
     font-size: 39px
     font-weight: 600
     line-height: 1
@@ -205,7 +201,8 @@
   border: 0
   box-shadow: none
   cursor: pointer
-  transform: translateY(-50%)
+  margin-top: -50px
+  transform: translateY(-50%) scale(0)
   &::before
     display: inline-block
     content: ' '
@@ -217,20 +214,20 @@
     transition: transform $transitionSpeed $ease
 
 .slick-next
-  right: 0
+  right: 10px
   &::before
     transform: rotate(-90deg)
   &:hover::before
     transform: scale(1.3) rotate(-90deg)
 
 .slick-prev
-  left: 0
+  left: 10px
   &::before
     transform: rotate(90deg)
   &:hover::before
     transform: scale(1.3) rotate(90deg)
 
-
+// CTA
 .cta
   flex: 1 1 auto
   display: flex
@@ -389,6 +386,20 @@
 // section active classes
 // animations control
 .section.active
+  .hero__image
+    &::after
+      transform: translateX(100%)
+      opacity: 0
+
+  .slick-next, .slick-prev
+    animation-name: ctaBlot
+    animation-duration: .6s
+    animation-timing-function: ease
+    animation-fill-mode: forwards
+  .slick-prev
+    animation-delay: .6s
+  .slick-next
+    animation-delay: .3s
   .cta__blot
     animation-name: ctaBlot
     animation-duration: .8s

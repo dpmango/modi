@@ -33,20 +33,18 @@ $(document).ready(function(){
 		e.preventDefault();
 	});
 
-  // ANIMATIONS
-  $('.hero').addClass('ready')
-
   // SCROLLIFY
   $.scrollify({
     section : ".section",
     sectionName : "section-name",
     interstitialSection : ".header",
-    easing: "easeOutExpo",
-    scrollSpeed: 1100,
+    // easing: "easeInCubic",
+    easing: "easeInQuart",
+    scrollSpeed: 700,
     offset : 0,
     scrollbars: true,
     standardScrollElements: "",
-    setHeights: false,
+    setHeights: true,
     overflowScroll: true,
     updateHash: true,
     touchScroll:true,
@@ -100,7 +98,10 @@ $(document).ready(function(){
     dots: false,
     arrows: true,
     infinite: true,
-    speed: 300,
+    speed: 400,
+    cssEase: 'ease-in',
+    pauseOnFocus: false,
+    pauseOnHover: false,
     slidesToShow: 1
   });
 
