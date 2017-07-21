@@ -4,7 +4,8 @@
   width: 100%
   -webkit-appearance: none
   background: white
-  color: $grayColor
+  color: $fontColor
+  font-weight: 700
   border: 2px solid transparent
   border-radius: 50px
   padding: 33px 68px
@@ -17,9 +18,12 @@
     background: white url('../img/userName@2x.png') no-repeat 32px center
     background-size: 27px 19px
   &::placeholder
+    font-weight: 400
     color: $fontColor
   &:focus
     border-color: $colorPrimary
+  &.has-error
+    border-color: #f05b83
 
 .ui-group
   margin-bottom: 17px

@@ -94,7 +94,7 @@ $(document).ready(function(){
 
   $('.js-slick').slick({
     autoplay: true,
-    autoplaySpeed: 6000,
+    autoplaySpeed: 3000,
     dots: false,
     arrows: true,
     infinite: true,
@@ -131,37 +131,37 @@ $(document).ready(function(){
     }
 
     // disable scrollify and prevent scroll
-    stopScroll()
+    stopScroll(true);
 
     // find by id
     var target = $(this).data('modal');
     $('#'+target).addClass('opened');
 
     // save state
-    window.location.hash = target;
+    // window.location.hash = target;
   });
 
   $('.js-modal__close').on('click', function(e){
     e.stopPropagation();
     $('.cta__call-modal').removeClass('active');
     $('.modal').removeClass('opened');
-    window.location.hash = "";
-    stopScroll()
+    // window.location.hash = "";
+    stopScroll(false);
   });
 
   // CHECK SAVED STATE
-  if(window.location.hash) {
-    var hash = window.location.hash.substring(1);
-    if (hash == "modalCta"){
-      $('.cta__call-modal').addClass('active');
-      $.scrollify.move("#cta");
-      stopScroll()
-    }
-    $('#'+hash).addClass('opened');
-  }
+  // if(window.location.hash) {
+  //   var hash = window.location.hash.substring(1);
+  //   if (hash == "modalCta"){
+  //     $('.cta__call-modal').addClass('active');
+  //     $.scrollify.move("#cta");
+  //     stopScroll()
+  //   }
+  //   $('#'+hash).addClass('opened');
+  // }
 
-  function stopScroll(){
-    if( $('.modal').is('.opened') ){
+  function stopScroll(state){
+    if( state == true ){
       $.scrollify.disable();
       $('body').on('touchmove', function (e) {
         e.preventDefault();
@@ -172,7 +172,7 @@ $(document).ready(function(){
           e.stopPropagation();
         }
       })
-    } else {
+    } else if ( state == false ){
       $.scrollify.enable();
       $('body').unbind("mousewheel");
       $('body').off("touchmove");

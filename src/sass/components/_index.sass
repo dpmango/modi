@@ -326,8 +326,6 @@
       transition: transform $transitionSpeed $ease, opacity .15s .1s ease
       cursor: pointer
       pointer-events: none
-      &:hover
-        transform: translate(-50%,-50%) scale(1.2) rotate(-10deg)
     &::before, &::after
       display: inline-block
       content: ' '
@@ -339,7 +337,8 @@
       background: #95ca6e
       border-radius: 50%
     &::before
-      transition: transform .4s ease-in
+      pointer-events: none
+      transition: transform .5s .1s ease-in
       z-index: 1
     &::after
       z-index: 1
@@ -353,7 +352,7 @@
       &::after
         animation-play-state: paused
     &.active
-      pointer-events: none
+      // pointer-events: none
       span
         opacity: 0
         transform: scale(0)
@@ -361,6 +360,8 @@
         transform: translate(-50%,-50%) scale(1)
         opacity: 1
         pointer-events: all
+        &:hover
+          transform: translate(-50%,-50%) scale(1.1) rotate(-45deg)
       &::before
         transform: translate(-50%, -50%) scale(15)
   &__blot

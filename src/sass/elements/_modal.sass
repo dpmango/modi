@@ -4,12 +4,7 @@
   -webkit-transform: translateZ(0)
   position: fixed 0
   z-index: 7
-  opacity: 0
   pointer-events: none
-  transition: all $transitionSpeed $ease
-  &.opened
-    opacity: 1
-    pointer-events: all
   &__wrapper
     position: relative
   &__content
@@ -23,19 +18,45 @@
   &__form
     margin: auto 20%
     max-width: 480px
+    pointer-events: all
+    .ui-group
+      opacity: 0
+      transform: translate3d(-25px,0,0)
     &__btn-wrap
       display: flex
       align-items: center
       .btn
         flex: 0 0 auto
+        opacity: 0
+        transform: translate3d(-25px,0,0)
     &__privacy
       font-size: 12px
       padding-left: 35px
       font-weight: 400
-      opacity: .8
+      opacity: 0
       a
         display: inline-block
         border-bottom: 1px solid $fontColor
         transition: border $transitionSpeed $ease
         &:hover
           border-color: transparent
+  &.opened
+    .modal__form
+      .ui-group
+        opacity: 1
+        transform: translate3d(0,0,0)
+        transition-timing-function: linear
+        transition-property: transform, opacity
+        transition-duration: .4s
+        &:nth-child(1)
+          transition-delay: .8s
+        &:nth-child(2)
+          transition-delay: 1s
+      &__btn-wrap
+        .btn
+          opacity: 1
+          transform: translate3d(0,0,0)
+          transition: transform .3s .5s ease, opacity .25s .6s ease
+      &__privacy
+        opacity: .8
+        transition: opacity .3s 1.2s ease
