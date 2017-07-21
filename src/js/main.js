@@ -51,6 +51,8 @@ $(document).ready(function(){
     updateHash: true,
     touchScroll:true,
     before:function(i, el) {
+      $('.section').removeClass('active');
+      $('.section:nth-child(' + i + ')').addClass('active');
       if (i > 1){
         $('.header').addClass('visible')
       } else {
@@ -71,6 +73,10 @@ $(document).ready(function(){
   $('.js-nextScrollifySection').on('click', function(){
     $.scrollify.next();
   });
+  $('.js-prevScrollifySection').on('click', function(){
+    $.scrollify.previous();
+  });
+
 
   //////////
   // SLIDERS
@@ -101,7 +107,6 @@ $(document).ready(function(){
   // set header text
   $('.js-slick').on('beforeChange', function(event, slick, currentSlide, nextSlide){
     var slideNumber = currentSlide + 1
-    console.log(slideNumber);
     $('.header__text span:nth-child(' + slideNumber + ')').addClass('removing');
   });
   $('.js-slick').on('afterChange', function(event, slick, currentSlide, nextSlide){
