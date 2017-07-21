@@ -56,6 +56,11 @@ $(document).ready(function(){
       } else {
         $('.header').removeClass('visible')
       }
+      if (i == 3){
+        $('.header__text').addClass('showing')
+      } else {
+        $('.header__text').removeClass('showing')
+      }
       storeScrollifySection = i;
     },
     after:function() {},
@@ -71,6 +76,13 @@ $(document).ready(function(){
   // SLIDERS
   //////////
 
+  $('.js-slick').on('init', function(event, slick){
+    slick.$slides.each(function(i,val){
+      $('.header__text').append( "<span>" + $(val).data('logo-text') + "</span>")
+    })
+    $('.header__text span:nth-child(' + 1 + ')').addClass('showing');
+  });
+
   $('.js-slick').slick({
     autoplay: true,
     autoplaySpeed: 6000,
@@ -81,6 +93,18 @@ $(document).ready(function(){
     slidesToShow: 1
   });
 
+  // set header text
+  $('.js-slick').on('beforeChange', function(event, slick, currentSlide, nextSlide){
+    var slideNumber = currentSlide + 1
+    console.log(slideNumber);
+    $('.header__text span:nth-child(' + slideNumber + ')').addClass('removing');
+  });
+  $('.js-slick').on('afterChange', function(event, slick, currentSlide, nextSlide){
+    $('.header__text span').removeClass('removing');
+    $('.header__text span').removeClass('showing');
+    var slideNumber = currentSlide + 1
+    $('.header__text span:nth-child(' + slideNumber + ')').addClass('showing');
+  });
 
   //////////
   // MODALS

@@ -24,3 +24,12 @@
   font-weight: 400;
   font-style: normal;
 }
+
+
+@font-face {
+  font-family: 'DINRoundPro';
+  src: url('../fonts/DINRoundPro-Bold.eot?#iefix') format('embedded-opentype'),  url('../fonts/DINRoundPro-Bold.otf')  format('opentype'),
+	     url('../fonts/DINRoundPro-Bold.woff') format('woff'), url('../fonts/DINRoundPro-Bold.ttf')  format('truetype'), url('../fonts/DINRoundPro-Bold.svg#DINRoundPro-Bold') format('svg');
+  font-weight: 700;
+  font-style: normal;
+}
