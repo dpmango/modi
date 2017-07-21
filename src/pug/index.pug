@@ -82,10 +82,23 @@ block content
                     .cta__figure__number 200 Р
                     .cta__figure__description магазинов по всей стране
                 
-                .cta__call-modal 
+                .cta__call-modal(data-modal='modalCta')
                   span Узнай об открытии первым
       
-      .modal
+      .modal#modalCta
         .modal__wrapper
+          .modal__content
+            .container
+              form.modal__form(action='').js-validateForm
+                .ui-group
+                  input(type='text' placeholder='Ваше имя').ui-input.ui-input--user
+                .ui-group
+                  input(type='email' placeholder='Ваш email').ui-input.ui-input--email
+                .modal__form__btn-wrap
+                  button(type='submit').btn
+                    span Подписаться
+                  .modal__form__privacy Нажимая на кнопку, вы даете <a href='#'>согласие на обработку</a> своих персональных данных
+                  
+              
           
           

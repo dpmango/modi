@@ -86,35 +86,59 @@ $(document).ready(function(){
   // MODALS
   //////////
   // Custom modals
-  // $('*[data-modal]').on('click', function(){
-  //   // remove all active first
-  //   $('.modal').removeClass('opened');
-  //
-  //   // find by id
-  //   var target = $(this).data('modal');
-  //   $('#'+target).addClass('opened');
-  //
-  //   window.location.hash = target;
-  // });
-  //
-  // $('.modal__close').on('click', function(){
-  //   $(this).closest('.modal').removeClass('opened');
-  //   window.location.hash = "";
-  // });
-  //
-  // // CHECK SAVED STATE
-  // if(window.location.hash) {
-  //   var hash = window.location.hash.substring(1);
-  //   $('#'+hash).addClass('opened');
-  // }
-  //
+  $('.cta__call-modal').on('click', function(){
 
+    // create circle animation and show X to close
+    $(this).addClass('active');
 
-  // Masked input
-  $(".js-dateMask").mask("99.99.9999",{placeholder:"__ __ ____"});
-  $(".js-dateMask2").mask("99.99.99",{placeholder:"ДД.ММ.ГГ"});
-  $(".js-indexMask").mask("999 999",{placeholder:"000 000"});
-  $("input[type='tel']").mask("+7 (000) 000-0000", {placeholder: "+7 (___) ___-____"});
+    // remove all active first (if any)
+    if ( $('.modal.opened').length > 0 ){
+      $('.modal').removeClass('opened');
+    }
 
+    // disable scrollify and prevent scroll
+    $.scrollify.disable();
+    stopScroll()
+
+    // find by id
+    var target = $(this).data('modal');
+    $('#'+target).addClass('opened');
+
+    // save state
+    window.location.hash = target;
+  });
+
+  $('.modal__close').on('click', function(){
+    $(this).closest('.modal').removeClass('opened');
+    window.location.hash = "";
+    $.scrollify.enable();
+    stopScroll()
+  });
+
+  // CHECK SAVED STATE
+  if(window.location.hash) {
+    var hash = window.location.hash.substring(1);
+    $('#'+hash).addClass('opened');
+    $('.cta__call-modal').addClass('active');
+    $.scrollify.disable();
+    stopScroll()
+  }
+
+  function stopScroll(){
+    if( $('.modal').is('.opened') ){
+      $('body').on('touchmove', function (e) {
+        e.preventDefault();
+      });
+      $('body').on({'mousewheel': function(e) {
+        if (e.target.id == 'el') return;
+          e.preventDefault();
+          e.stopPropagation();
+        }
+      })
+    } else {
+      $('body').unbind("mousewheel");
+      $('body').off("touchmove");
+    }
+  }
 
 });

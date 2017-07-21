@@ -1,5 +1,6 @@
 # MODI HTML/CSS
-This package intended to solve common front-end development tasks.
+
+https://modi-html.surge.sh
 
 
 ## How to start
@@ -25,17 +26,13 @@ Task name          | Description
 ### Other tasks
 Task name          | Description                                                      
 :------------------|:----------------------------------
-`sass` 	         | compile .sass/.scss to .css. We also use [postcss](https://github.com/postcss/postcss) for [autoprefixer](https://github.com/postcss/autoprefixer) and [Lost](https://github.com/peterramsing/lost), so feel free to include other awesome postcss [plugins](https://github.com/postcss/postcss#plugins) when needed
-`webpack`          | compile .js sources into bundle file
+`sass` 	         | compile .sass/.scss to .css. We also use [postcss](https://github.com/postcss/postcss) for [autoprefixer](https://github.com/postcss/autoprefixer) and bunch of other awesome postcss [plugins](https://github.com/postcss/postcss#plugins) when needed
 `copy`             | copy common files from `./src` path to `./dist` path
-`jade`             | compile [jade](http://jade-lang.com/) templates
-`sprite:svg`       | create svg symbol sprites ([css-tricks](https://css-tricks.com/svg-sprites-use-better-icon-fonts/))
+`pug`             | compile [pug](https://pugjs.org/) templates
 `sprite:png`       | create png sprites
 `server`           | run dev-server powered by [BrowserSync](https://www.browsersync.io/)
 `clean`            | remove `./dist` folder
-`list-pages`       | create index file with links to all project pages
 
-_This is a full list of tasks, that we use in our projects, but not all of them should be available in current project.
 All available tasks are placed in a folder `./gulp/tasks` as separate *.js files. Usually, file name = task name._
 
 
@@ -47,19 +44,6 @@ We have several useful flags.
 * `gulp --tunnel=[name]` or `gulp server --tunnel [name]` - runs dev server and allows you to easily share a web service on your local development machine (powered by [localtunnel.me](https://localtunnel.me/)). Your local site will be available at `[name].localtunnel.me`.
 * `gulp [task_name] --prod` or `gulp [task_name] --production` - run task in production mode. Some of the tasks (like, sass or js compilation) have additional settings for production mode (such as code minification), so with this flag you can force production mode. `gulp build` uses this mode by default.
 
-##Other
-You can also use [npm scripts](https://docs.npmjs.com/misc/scripts):
-
-* `npm run start` - same as `gulp default`.
-* `npm run build` - same as `gulp build`.
-* `npm run ghpages` to push only `./dist` folder to **gh-pages** branch on github (very useful for previews).
-
-
 
 ### Setup + all packages
 `yarn add gulp require-dir run-sequence gulp-util gulp-notify gulp-cache del gulp-sass gulp-sourcemaps gulp-postcss autoprefixer cssnano postcss-short postcss-sorting postcss-pseudoelements gulp-rename gulp-imagemin gulp-pug gulp-front-matter gulp-plumber gulp-if browser-sync gulp-consolidate require-yaml gulp-concat gulp-uglify gulp-svgmin gulp-svgstore gulp-cheerio through2 gulp.spritesmith vinyl-buffer gulp-htmlhint gulp-sass-lint gulp-eslint eslint-config-airbnb eslint-plugin-jsx-a11y eslint-plugin-react eslint-plugin-import gulp-replace gulp-svg-sprites`
-
-## Credits
-The idea of structure was originally developed by riverco.de studio. I took the best parts, redesigned the builder and adjust to my specific tasks.
-
-Original Gulp Starter Pack v.1 could be found of a separate branch
