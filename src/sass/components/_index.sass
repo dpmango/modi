@@ -6,7 +6,6 @@
   min-height: 100vh
   padding-top: 100px
   background: white
-  overflow: hidden
   > .container
     flex: 1 1 auto
     display: flex
@@ -34,7 +33,7 @@
       right: 0
       opacity: 1
       background: white
-      transition: transform 1s ease-in, opacity .7s .5s ease-out
+      transition: transform 1s 1s ease-in, opacity .7s 1.5s ease-out
     img
       max-width: 100%
   &__clip
@@ -53,8 +52,35 @@
     font-weight: 600
     line-height: 1
     text-transform: lowercase
+    opacity: 0
+    transition: opacity .3s .5s linear
+  .next-section
+    span, .ico
+      opacity: 0
+      transform: translate3d(0,40px,0)
+      animation-duration: .5s
+      animation-timing-function: $easeOutBack
+      animation-fill-mode: forwards
+    span
+      animation-name: nextSection
+      animation-delay: 1.8s
+    .ico
+      animation-name: nextSectionIco
+      animation-delay: 2s
+
++r($tablet)
+  .hero
+    &__text
+      font-size: 34px
+
++r($mobile)
+  .hero
+    &__text
+      font-size: 28px
 
 .next-section
+  position: relative
+  z-index: 5
   margin-top: 25px
   margin-bottom: 25px
   font-size: 17px
@@ -65,6 +91,11 @@
   span
     display: block
     margin-bottom: 15px
+  .ico
+    transition: all $transitionSpeed $ease
+  &:hover
+    .ico
+      transform: translate3d(0,0px,0) scale(1.2)
 
 
 .info
@@ -134,6 +165,8 @@
         img
           animation-delay: .6s
     &__image
+      margin-left: auto
+      margin-right: auto
       border-radius: 50%
       display: flex
       flex-direction: column
@@ -154,8 +187,119 @@
       font-size: 15px
       font-weight: 600
 
++r(900)
+  .info
+    &__description
+      font-size: 35px
+      line-height: 1.4
+      max-width: 600px
+
+    &__blot
+      &--purple
+        top: -110px
+        left: 35%
+        .info__blot__image
+          size: 140px
+      &--tint
+        top: 0%
+        right: 0
+        .info__blot__image
+          size: 120px
+      &--blue
+        right: 10%
+        bottom: 40px
+        .info__blot__image
+          size: 120px
+      &--red
+        bottom: 40px
+        left: 25%
+        .info__blot__image
+          size: 55px
+      &--green
+        left: 0
+        top: 60%
+        .info__blot__image
+          size: 100px
+      &__image
+        img
+          max-width: 70%
+      &__name
+        font-size: 14px
+        margin-top: 10px
+
+
+
++r($mobile)
+  .info
+    &__description
+      font-size: 28px
+    &__blot
+      &__name
+        font-size: 0
+      &--purple
+        top: -110px
+        left: 35%
+        .info__blot__image
+          size: 100px
+      &--tint
+        top: -20px
+        right: 0
+        .info__blot__image
+          size: 90px
+      &--blue
+        right: 5%
+        bottom: 50px
+        .info__blot__image
+          size: 90px
+      &--red
+        bottom: 15px
+        left: 15%
+        .info__blot__image
+          size: 55px
+      &--green
+        left: 0
+        top: 60%
+        .info__blot__image
+          size: 80px
+      &__image
+        img
+          max-width: 60%
+
++r($mobile-s)
+  .info
+    &__description
+      font-size: 28px
+    &__blot
+      &__name
+        font-size: 0
+      &--purple
+        top: -110px
+        left: 40%
+        .info__blot__image
+          size: 100px
+      &--tint
+        top: 10px
+        right: 0
+        .info__blot__image
+          size: 90px
+      &--blue
+        right: 0
+        bottom: 80px
+        .info__blot__image
+          size: 80px
+      &--red
+        bottom: 15px
+        left: 10%
+        .info__blot__image
+          size: 55px
+      &--green
+        left: -5px
+        top: 70%
+        .info__blot__image
+          size: 80px
+
 .slider
-  margin-top: -100px
+  transform: translate3d(0,-100px,0)
   position: relative
   *:focus
     outline: none
@@ -240,6 +384,9 @@
     top: -100px
     .ico
       transform: rotate(180deg)
+    &:hover
+      .ico
+        transform: rotate(180deg) scale(1.2)
   &__wrapper
     margin-top: auto
     margin-bottom: auto
@@ -337,6 +484,7 @@
       background: #95ca6e
       border-radius: 50%
     &::before
+      opacity: 0
       pointer-events: none
       transition: transform .5s .1s ease-in
       z-index: 1
@@ -363,6 +511,7 @@
         &:hover
           transform: translate(-50%,-50%) scale(1.1) rotate(-45deg)
       &::before
+        opacity: 1
         transform: translate(-50%, -50%) scale(15)
   &__blot
     position: absolute
@@ -383,14 +532,75 @@
       left: 25%
       bottom: -250px
 
++r($desktop)
+  .cta
+    &__text
+      flex: 0 1 380px
+      font-size: 25px
+    &__right
+      flex: 0 0 auto
+      margin-left: auto
+    &__figure
+      &__number
+        font-size: 75px
+    &__call-modal
+      flex: 0 0 210px
+      size: 210px
+      font-size: 28px
+      &::before, &::after
+        size: 210px
+
+
++r(870)
+  .cta
+    &__text
+      flex: 0 1 350px
+      font-size: 22px
+    &__figure
+      margin-bottom: 25px
+      &__number
+        font-size: 68px
+    &__call-modal
+      flex: 0 0 190px
+      size: 190px
+      font-size: 26px
+      &::before, &::after
+        size: 190px
+
++r($tablet)
+  .cta
+    &__wrapper
+      flex-direction: column
+      max-width: 450px
+      margin-left: auto
+      margin-right: auto
+    &__text
+      flex: 0 0 auto
+      padding-right: 0
+    &__right
+      margin-top: 20px
+      flex: 0 0 auto
+      padding-left: 0
+      margin-left: 0
+      align-items: center
 
 // section active classes
 // animations control
 .section.active
-  .hero__image
-    &::after
-      transform: translateX(100%)
-      opacity: 0
+  .hero
+    &__image
+      &::after
+        transform: translateX(100%)
+        opacity: 0
+    &__text
+      opacity: 1
+    .next-section
+      span, .ico
+        transform: translate3d(0,0px,0)
+      &:hover
+        .ico
+          transform: scale(1.2)
+
 
   .slick-next, .slick-prev
     animation-name: ctaBlot

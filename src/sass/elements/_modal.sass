@@ -2,12 +2,13 @@
 .modal
   -webkit-overflow-scrolling: touch
   -webkit-transform: translateZ(0)
-  position: fixed 0
+  position: absolute 0
   z-index: 7
   pointer-events: none
   &__wrapper
     position: relative
   &__content
+    margin-top: -100px
     min-height: 100vh
     display: flex
     flex-direction: column
@@ -16,7 +17,7 @@
       display: flex
       flex-direction: column
   &__form
-    margin: auto 20%
+    margin: auto 0% auto 15%
     max-width: 480px
     pointer-events: all
     .ui-group
@@ -60,3 +61,15 @@
       &__privacy
         opacity: .8
         transition: opacity .3s 1.2s ease
+
++r($tablet)
+  .modal
+    &__form
+      margin-left: 5%
+      margin-right: 5%
+      &__btn-wrap
+        flex-direction: column
+      &__privacy
+        margin-top: 15px
+        text-align: center
+        max-width: 300px

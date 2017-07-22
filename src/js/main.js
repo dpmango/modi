@@ -33,40 +33,47 @@ $(document).ready(function(){
 		e.preventDefault();
 	});
 
+  setTimeout(function(){
+    startScrollify();
+    $('.section:first-child').addClass('active');
+  },300);
+
   // SCROLLIFY
-  $.scrollify({
-    section : ".section",
-    sectionName : "section-name",
-    interstitialSection : ".header",
-    // easing: "easeInCubic",
-    easing: "easeInQuart",
-    scrollSpeed: 700,
-    offset : 0,
-    scrollbars: true,
-    standardScrollElements: "",
-    setHeights: true,
-    overflowScroll: true,
-    updateHash: true,
-    touchScroll:true,
-    before:function(i, el) {
-      $('.section').removeClass('active');
-      $('.section:nth-child(' + i + ')').addClass('active');
-      if (i > 1){
-        $('.header').addClass('visible')
-      } else {
-        $('.header').removeClass('visible')
-      }
-      if (i == 3){
-        $('.header__text').addClass('showing')
-      } else {
-        $('.header__text').removeClass('showing')
-      }
-      storeScrollifySection = i;
-    },
-    after:function() {},
-    afterResize:function() {},
-    afterRender:function() {}
-  });
+  function startScrollify(){
+    $.scrollify({
+      section : ".section",
+      sectionName : "section-name",
+      interstitialSection : "",
+      // easing: "easeInCubic",
+      easing: "easeInQuart",
+      scrollSpeed: 700,
+      offset : 0,
+      scrollbars: true,
+      standardScrollElements: "",
+      setHeights: false,
+      overflowScroll: true,
+      updateHash: true,
+      touchScroll:true,
+      before:function(i, el) {
+        var sectionChild = i + 1
+        $('.section').removeClass('active');
+        $('.section:nth-child(' + sectionChild + ')').addClass('active');
+        if (sectionChild > 1){
+          $('.header').addClass('visible')
+        } else {
+          $('.header').removeClass('visible')
+        }
+        if (sectionChild == 3){
+          $('.header__text').addClass('showing')
+        } else {
+          $('.header__text').removeClass('showing')
+        }
+      },
+      after:function() {},
+      afterResize:function() {},
+      afterRender:function() {}
+    });
+  }
 
   $('.js-nextScrollifySection').on('click', function(){
     $.scrollify.next();

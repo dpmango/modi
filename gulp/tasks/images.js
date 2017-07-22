@@ -1,6 +1,7 @@
 var gulp     = require('gulp');
 var cache    = require('gulp-cache');
 var imagemin = require('gulp-imagemin');
+var util     = require('gulp-util');
 var config   = require('../config.js');
 
 
