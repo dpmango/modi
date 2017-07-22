@@ -11,12 +11,12 @@ gulp.task('images', function(){
       config.src.img + '**/*.{jpg,png,jpeg,svg,gif}',
       '!' + config.src.img + '/svgo/**/*.*'
     ])
-    .pipe(config.production ? imagemin([
-      imagemin.gifsicle({interlaced: true}),
-    	imagemin.jpegtran({progressive: true}),
-    	imagemin.optipng({optimizationLevel: 3}),
-    	imagemin.svgo({plugins: [{removeViewBox: true}]})
-    ]) : util.noop())
+    // .pipe(config.production ? imagemin([
+    //   imagemin.gifsicle({interlaced: true}),
+    // 	imagemin.jpegtran({progressive: true}),
+    // 	imagemin.optipng({optimizationLevel: 3}),
+    // 	imagemin.svgo({plugins: [{removeViewBox: true}]})
+    // ]) : util.noop())
     .pipe(gulp.dest(config.dest.img))
 });
 
