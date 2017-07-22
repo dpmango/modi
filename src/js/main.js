@@ -24,6 +24,10 @@ $(document).ready(function(){
     }
   }
 
+  if ( _mobileDevice ){
+    $('body').addClass('is-mobile');
+  }
+
   //////////
   // COMMON
   //////////
@@ -44,14 +48,14 @@ $(document).ready(function(){
     $.scrollify({
       section : ".section",
       sectionName : "section-name",
-      interstitialSection : "",
+      interstitialSection : "[data-section-name='cta']",
       // easing: "easeInCubic",
       easing: "easeInQuart",
       scrollSpeed: 700,
       offset : 0,
       scrollbars: true,
-      standardScrollElements: "",
-      setHeights: false,
+      standardScrollElements: "[data-section-name='cta']",
+      setHeights: true,
       overflowScroll: true,
       updateHash: true,
       touchScroll:true,
@@ -62,7 +66,6 @@ $(document).ready(function(){
         $('.section:nth-child(' + sectionChild + ')').addClass('active');
 
         // animate preloader
-        console.log(sectionChild, currentSectionId)
         if (sectionChild == 2 && currentSectionId == 1){
           $('.preloader').addClass('stage2')
           setTimeout(function(){
@@ -96,6 +99,25 @@ $(document).ready(function(){
       afterRender:function() {}
     });
   }
+
+  // emulate behavior for scrollify standartScroll section
+  var lastScrollTop = 0;
+  var scrollLock = false;
+  _window.scrolled(50, function(e){
+    var wScroll = _window.scrollTop();
+    // lastScrollTop > wScroll &&
+    var bindPrevMove = currentSectionId == 4 && lastScrollTop - wScroll > 50
+    // var bindPrevMove = currentSectionId == 4 && e.originalEvent.wheelDelta >= 0
+    if ( !scrollLock && bindPrevMove ){
+      console.log('moving')
+      $.scrollify.previous();
+      scrollLock == true;
+      setTimeout(function(){
+        scrollLock = false;
+      },800)
+    }
+    lastScrollTop = wScroll;
+  });
 
   $('.js-nextScrollifySection').on('click', function(){
     $.scrollify.next();
