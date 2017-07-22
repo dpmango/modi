@@ -689,3 +689,56 @@
     animation-delay: 2s
     animation-timing-function: ease
     animation-fill-mode: forwards
+
+
+.preloader
+  display: flex
+  position: fixed 0
+  z-index: 9
+  pointer-events: none
+  &__wrapper
+    position: relative
+    height: 100vh
+    width: 100%
+  &__blot
+    display: block
+    content: ' '
+    position: absolute
+    top: calc(50% - 40px)
+    left: 50%
+    size: 30px
+    background: #f2f2f2
+    border-radius: 50%
+    z-index: 5
+    transform: translate(-50%,-50%) scale(1)
+    animation: preloaderBlot .5s ease
+    animation-fill-mode: forwards
+  &__image
+    position: absolute
+    top: 50%
+    left: 50%
+    transform: translate3d(-50%,-50%,0)
+    z-index: 6
+    -webkit-clip-path: circle(0px at center)
+    clip-path: circle(0px at center)
+    // clip-path: url("#clip-shape2")
+  &__circle
+    position: absolute
+    top: 50%
+    left: 50%
+    transform: translate3d(-50%,-50%,0) scale(1)
+    z-index: 7
+    opacity: 0
+    border-radius: 50%
+    size: 60px
+    background: white
+    transition: transform .3s linear
+  &.stage2
+    .preloader
+      &__image
+        opacity: 1
+        animation: preloaderImage .6s linear
+      &__circle
+        transform: translate3d(-50%,-50%,0) scale(.5)
+        opacity: 1
+        animation: preloaderCircle .5s .3s linear

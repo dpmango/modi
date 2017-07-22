@@ -67,3 +67,27 @@
   100%
     opacity: 1
     transform: translate3d(0,0px,0)
+
+@keyframes preloaderBlot
+  0%
+    transform: translate(-50%,-50%) scale(1)
+  50%
+    transform: translate(-50%,-50%) scale(1.6)
+    opacity: 1
+  100%
+    opacity: 0
+    transform: translate(-50%,-50%) scale(.5)
+
+@keyframes preloaderImage
+  from
+    -webkit-clip-path: circle(0px at center)
+    clip-path: circle(0px at center)
+  to
+    -webkit-clip-path: circle(100% at center)
+    clip-path: circle(100% at center)
+
+@keyframes preloaderCircle
+  from
+    transform: translate3d(-50%,-50%,0) scale(.5)
+  to
+    transform: translate3d(-50%,-50%,0) scale(30)

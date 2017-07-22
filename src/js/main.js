@@ -56,20 +56,39 @@ $(document).ready(function(){
       touchScroll:true,
       before:function(i, el) {
         var sectionChild = i + 1
+        var prevSlideId = $('.section:nth-child(' + sectionChild + ')').prev().data('id')
+
+        // set active class for section
         $('.section').removeClass('active');
         $('.section:nth-child(' + sectionChild + ')').addClass('active');
-        if (sectionChild > 1){
-          $('.header').addClass('visible')
+
+        // animate preloader
+        if (sectionChild == 2 && prevSlideId == 1){
+          $('.preloader').addClass('stage2')
+          setTimeout(function(){
+            $('.preloader').removeClass('stage2');
+          },800);
         } else {
-          $('.header').removeClass('visible')
+          $('.preloader').removeClass('stage2');
         }
+
+        // header texts for slider
         if (sectionChild == 3){
           $('.header__text').addClass('showing')
         } else {
           $('.header__text').removeClass('showing')
         }
       },
-      after:function() {},
+      after:function(i, el) {
+        var sectionChild = i + 1
+
+        // controll header
+        if (sectionChild > 1){
+          $('.header').addClass('visible')
+        } else {
+          $('.header').removeClass('visible')
+        }
+      },
       afterResize:function() {},
       afterRender:function() {}
     });
