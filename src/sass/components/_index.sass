@@ -4,9 +4,10 @@
   display: flex
   flex-direction: column
   min-height: 100vh
-  padding-top: 100px
   background: white
+  overflow: hidden
   > .container
+    padding-top: 100px
     flex: 1 1 auto
     display: flex
     flex-direction: column
@@ -299,7 +300,6 @@
           size: 80px
 
 .slider
-  transform: translate3d(0,-100px,0)
   position: relative
   *:focus
     outline: none
@@ -334,6 +334,11 @@
     transition: transform $transitionSpeed $ease
     &:hover
       transform: translateX(-50%) scale(1.2)
+
++r($mobile)
+  .slider
+    &__next
+      size: 80px
 
 .slick-next, .slick-prev
   position: absolute
@@ -530,7 +535,8 @@
     &--bottom
       size: 320px
       left: 25%
-      bottom: -250px
+      bottom: 0
+      transform: scale(0) translateY(250px)
 
 +r($desktop)
   .cta
@@ -584,6 +590,18 @@
       margin-left: 0
       align-items: center
 
++r($mobile-s)
+  .cta
+    &__text
+      font-size: 20px
+    &__right
+      flex-direction: column
+      align-items: flex-start
+    &__call-modal
+      margin-left: auto
+      margin-right: auto
+      margin-bottom: 50px
+
 // section active classes
 // animations control
 .section.active
@@ -600,8 +618,6 @@
       &:hover
         .ico
           transform: scale(1.2)
-
-
   .slick-next, .slick-prev
     animation-name: ctaBlot
     animation-duration: .6s
@@ -619,6 +635,7 @@
     &--middle
       animation-delay: .5s
     &--bottom
+      animation-name: ctaBlotBottom
       animation-delay: 1.3s
   .cta__text
     opacity: 1
