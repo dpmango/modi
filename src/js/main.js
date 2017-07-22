@@ -39,6 +39,7 @@ $(document).ready(function(){
   },300);
 
   // SCROLLIFY
+  var currentSectionId = 1
   function startScrollify(){
     $.scrollify({
       section : ".section",
@@ -56,14 +57,13 @@ $(document).ready(function(){
       touchScroll:true,
       before:function(i, el) {
         var sectionChild = i + 1
-        var prevSlideId = $('.section:nth-child(' + sectionChild + ')').prev().data('id')
-
         // set active class for section
         $('.section').removeClass('active');
         $('.section:nth-child(' + sectionChild + ')').addClass('active');
 
         // animate preloader
-        if (sectionChild == 2 && prevSlideId == 1){
+        console.log(sectionChild, currentSectionId)
+        if (sectionChild == 2 && currentSectionId == 1){
           $('.preloader').addClass('stage2')
           setTimeout(function(){
             $('.preloader').removeClass('stage2');
@@ -88,6 +88,9 @@ $(document).ready(function(){
         } else {
           $('.header').removeClass('visible')
         }
+
+        currentSectionId = sectionChild
+
       },
       afterResize:function() {},
       afterRender:function() {}
