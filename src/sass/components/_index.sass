@@ -113,14 +113,21 @@
     font-size: 40px
     font-weight: 600
     line-height: 1.5
+    opacity: 0
+    transform: translate3d(0,20px,0)
+    transition: transform .4s .8s ease-in, opacity .3s .9s linear
   &__blot
     position: absolute
     z-index: 2
     text-align: center
+    opacity: 0
+    transform: scale(0)
+    transition: transoform .3s $easeOutBack, opacity .2s linear
     &--purple
       top: -130px
       left: 35%
       color: #702c7c
+      transition-delay: 1.5s
       .info__blot__image
         size: 175px
         background: #702c7c
@@ -131,6 +138,7 @@
       top: 20%
       right: 0
       color: #00a99d
+      transition-delay: 2.2s
       .info__blot__image
         size: 150px
         background: #00a99d
@@ -141,6 +149,7 @@
       right: 10%
       bottom: 40px
       color: #3369ab
+      transition-delay: 2.5s
       .info__blot__image
         size: 150px
         background: #3369ab
@@ -151,6 +160,7 @@
       bottom: 40px
       left: 25%
       color: #f05b83
+      transition-delay: 1.9s
       .info__blot__image
         size: 70px
         background: #f05b83
@@ -159,6 +169,7 @@
       top: 50%
       transform: translateY(-50%)
       color: #4eb857
+      transition-delay: 1.8s
       .info__blot__image
         size: 120px
         background: #4eb857
@@ -187,6 +198,19 @@
       margin-top: 15px
       font-size: 15px
       font-weight: 600
+  .next-section
+    span, .ico
+      opacity: 0
+      transform: translate3d(0,40px,0)
+      animation-duration: .5s
+      animation-timing-function: $easeOutBack
+      animation-fill-mode: both
+    span
+      animation-name: nextSection
+      animation-delay: 3s
+    .ico
+      animation-name: nextSectionIco
+      animation-delay: 3.2s
 
 +r(900)
   .info
@@ -614,6 +638,20 @@
       opacity: 1
     .next-section
       span, .ico
+        transform: translate3d(0,0px,0)
+      &:hover
+        .ico
+          transform: scale(1.2)
+  .info
+    &__description
+      transform: translate3d(0,0,0)
+      opacity: 1
+    &__blot
+      opacity: 1
+      transform: scale(1)
+    .next-section
+      span, .ico
+        opacity: 1
         transform: translate3d(0,0px,0)
       &:hover
         .ico
