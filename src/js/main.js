@@ -109,8 +109,7 @@ $(document).ready(function(){
     var bindPrevMove = currentSectionId == 4 && lastScrollTop - wScroll > 50
     // var bindPrevMove = currentSectionId == 4 && e.originalEvent.wheelDelta >= 0
     if ( !scrollLock && bindPrevMove ){
-      console.log('moving')
-      $.scrollify.previous();
+      $.scrollify.move('#sliderSection')
       scrollLock == true;
       setTimeout(function(){
         scrollLock = false;
@@ -190,6 +189,8 @@ $(document).ready(function(){
 
     // save state
     // window.location.hash = target;
+
+    calcModalPosition()
   });
 
   $('.js-modal__close').on('click', function(e){
@@ -229,5 +230,29 @@ $(document).ready(function(){
       $('body').off("touchmove");
     }
   }
+
+
+
+
+  // adjust modal position for mobile
+  var bottomPos
+  if ( _window.width() < 768 ){
+    _window.scrolled(50, function(){
+      bottomPos = (_window.scrollTop() - $('.page').height() + _window.height() ) * -1;
+    })
+  }
+
+  function calcModalPosition(){
+    if ( _window.width() < 768 ){
+      console.log(bottomPos)
+      $('.modal').css('bottom', bottomPos)
+    } else {
+      $('.modal').css('bottom', 0)
+    }
+  }
+
+  _window.resized(50, function(){
+    calcModalPosition();
+  })
 
 });
