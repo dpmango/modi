@@ -172,6 +172,13 @@ $(document).ready(function(){
   //////////
   // Custom modals
   $('.cta__call-modal').on('click', function(){
+    // scroll to bottom
+    $('html, body').animate({
+     scrollTop: $(document).height() - _window.height()},
+     50,
+     "easeOutQuint"
+    );
+
     // create circle animation and show X to close
     $(this).addClass('active');
 
@@ -244,8 +251,7 @@ $(document).ready(function(){
 
   function calcModalPosition(){
     if ( _window.width() < 768 ){
-      console.log(bottomPos)
-      $('.modal').css('bottom', bottomPos)
+      $('.modal').css('bottom', 0) // bottomPos?
     } else {
       $('.modal').css('bottom', 0)
     }
