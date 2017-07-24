@@ -56,7 +56,7 @@ $(document).ready(function(){
   // SCROLLIFY
   var currentSectionId = 1
   function startScrollify(){
-    if ( !isBadMobile() ){
+    if ( isBadMobile() ){
       $.scrollify({
         section : ".section",
         sectionName : "section-name",
