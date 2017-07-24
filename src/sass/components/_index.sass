@@ -120,9 +120,9 @@
     position: absolute
     z-index: 2
     text-align: center
-    opacity: 0
     transform: scale(0)
-    transition: transoform .3s $easeOutBack, opacity .2s linear
+    opacity: 1
+    transition: transform .3s $easeOutBack
     &--purple
       top: -130px
       left: 35%
@@ -166,8 +166,7 @@
         background: #f05b83
     &--green
       left: 0
-      top: 50%
-      transform: translateY(-50%)
+      top: 45%
       color: #4eb857
       transition-delay: 1.8s
       .info__blot__image
@@ -664,7 +663,6 @@
       transform: translate3d(0,0,0)
       opacity: 1
     &__blot
-      opacity: 1
       transform: scale(1)
     .next-section
       span, .ico

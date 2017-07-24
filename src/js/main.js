@@ -24,10 +24,21 @@ $(document).ready(function(){
     }
   }
 
+  function isBadMobile(){
+    if( /Android|webOS|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+      return true
+    } else {
+      return false
+    }
+  }
+
   if ( _mobileDevice ){
     $('body').addClass('is-mobile');
   }
 
+  if (isBadMobile()){
+    $('.section').addClass('active');
+  }
   //////////
   // COMMON
   //////////
@@ -45,59 +56,61 @@ $(document).ready(function(){
   // SCROLLIFY
   var currentSectionId = 1
   function startScrollify(){
-    $.scrollify({
-      section : ".section",
-      sectionName : "section-name",
-      interstitialSection : "[data-section-name='cta']",
-      // easing: "easeInCubic",
-      easing: "easeInQuart",
-      scrollSpeed: 700,
-      offset : 0,
-      scrollbars: true,
-      standardScrollElements: "[data-section-name='cta']",
-      setHeights: true,
-      overflowScroll: true,
-      updateHash: true,
-      touchScroll:true,
-      before:function(i, el) {
-        var sectionChild = i + 1
-        // set active class for section
-        $('.section').removeClass('active');
-        $('.section:nth-child(' + sectionChild + ')').addClass('active');
+    if ( !isBadMobile() ){
+      $.scrollify({
+        section : ".section",
+        sectionName : "section-name",
+        interstitialSection : "[data-section-name='cta']",
+        // easing: "easeInCubic",
+        easing: "easeInQuart",
+        scrollSpeed: 700,
+        offset : 0,
+        scrollbars: false,
+        standardScrollElements: "[data-section-name='cta']",
+        setHeights: true,
+        overflowScroll: true,
+        updateHash: true,
+        touchScroll:true,
+        before:function(i, el) {
+          var sectionChild = i + 1
+          // set active class for section
+          $('.section').removeClass('active');
+          $('.section:nth-child(' + sectionChild + ')').addClass('active');
 
-        // animate preloader
-        if (sectionChild == 2 && currentSectionId == 1){
-          $('.preloader').addClass('stage2')
-          setTimeout(function(){
+          // animate preloader
+          if (sectionChild == 2 && currentSectionId == 1){
+            $('.preloader').addClass('stage2')
+            setTimeout(function(){
+              $('.preloader').removeClass('stage2');
+            },800);
+          } else {
             $('.preloader').removeClass('stage2');
-          },800);
-        } else {
-          $('.preloader').removeClass('stage2');
-        }
+          }
 
-        // header texts for slider
-        if (sectionChild == 3){
-          $('.header__text').addClass('showing')
-        } else {
-          $('.header__text').removeClass('showing')
-        }
-      },
-      after:function(i, el) {
-        var sectionChild = i + 1
+          // header texts for slider
+          if (sectionChild == 3){
+            $('.header__text').addClass('showing')
+          } else {
+            $('.header__text').removeClass('showing')
+          }
+        },
+        after:function(i, el) {
+          var sectionChild = i + 1
 
-        // controll header
-        if (sectionChild > 1){
-          $('.header').addClass('visible')
-        } else {
-          $('.header').removeClass('visible')
-        }
+          // controll header
+          if (sectionChild > 1){
+            $('.header').addClass('visible')
+          } else {
+            $('.header').removeClass('visible')
+          }
 
-        currentSectionId = sectionChild
+          currentSectionId = sectionChild
 
-      },
-      afterResize:function() {},
-      afterRender:function() {}
-    });
+        },
+        afterResize:function() {},
+        afterRender:function() {}
+      });
+    }
   }
 
   // emulate behavior for scrollify standartScroll section
