@@ -109,7 +109,7 @@ $(document).ready(function(){
     var bindPrevMove = currentSectionId == 4 && lastScrollTop - wScroll > 50
     // var bindPrevMove = currentSectionId == 4 && e.originalEvent.wheelDelta >= 0
     if ( !scrollLock && bindPrevMove ){
-      $.scrollify.move('#sliderSection')
+      $.scrollify.move('#slider')
       scrollLock == true;
       setTimeout(function(){
         scrollLock = false;
